@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --color-brand-bg: #0F172A;
+  --color-brand-card: #1E293B;
+  --color-brand-primary: #38BDF8;
+  --color-brand-text: #F8FAFC;
+  --color-brand-secondary: #94A3B8;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes border-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mesh-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counter-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes slow-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Custom base adjustments */
+html {
+  scroll-behavior: smooth;
+  color: var(--color-brand-text);
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* Fluid dynamic mesh flow background */
+  background: linear-gradient(-45deg, #090d16, #0f172a, #1e1b4b, #0c2040, #090d16);
+  background-size: 400% 400%;
+  animation: mesh-flow 18s ease infinite;
+}
+
+/* Light mode theme overrides */
+html.light {
+  --color-brand-bg: #F8FAFC;
+  --color-brand-card: #FFFFFF;
+  --color-brand-primary: #0284C7;
+  --color-brand-text: #0F172A;
+  --color-brand-secondary: #475569;
+}
+
+html.light body {
+  background: linear-gradient(-45deg, #f8fafc, #f1f5f9, #e2e8f0, #ffffff);
+  color: #0F172A;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html.light .bg-brand-card\/90,
+html.light .bg-brand-card\/30,
+html.light .bg-brand-card {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+}
+
+html.light .text-brand-text {
+  color: #0f172a !important;
+}
+
+html.light .text-brand-secondary {
+  color: #475569 !important;
+}
+
+html.light .border-brand-secondary\/20,
+html.light .border-brand-secondary\/15,
+html.light .border-brand-secondary\/10 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-card);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-primary);
+}
+
+/* Glow Background Effects */
+.radial-glow {
+  background: radial-gradient(circle 600px at var(--x, 50%) var(--y, 50%), rgba(56, 189, 248, 0.09), transparent 80%);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #38BDF8, #60A5FA, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Border animation classes */
+.animate-border-rotate {
+  animation: border-rotate 8s linear infinite;
+}
+
+/* Custom cursor and hover morph overrides */
+@media (min-width: 1024px) {
+  body, a, button, input, textarea, select {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-brand-primary);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.25s ease-out, height 0.25s ease-out, background-color 0.25s ease-out;
+}
+
+.custom-cursor-hover {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(56, 189, 248, 0.15);
+  border: 1px solid var(--color-brand-primary);
+}
+
+/* Preloader slide up clip effects */
+.loader-container {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loader-container-closed {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 1.8s infinite ease-in-out;
+}
+
+.animate-orbit {
+  animation: orbit 24s linear infinite;
+}
+
+.animate-counter-orbit {
+  animation: counter-orbit 24s linear infinite;
+}
+
+.animate-orbit-slow {
+  animation: orbit 34s linear infinite;
+}
+
+.animate-counter-orbit-slow {
+  animation: counter-orbit 34s linear infinite;
+}
+
+.animate-orbit-fast {
+  animation: orbit 20s linear infinite;
+}
+
+.animate-counter-orbit-fast {
+  animation: counter-orbit 20s linear infinite;
+}
+
+.animate-slow-float {
+  animation: slow-float 6s ease-in-out infinite;
+}
+
+@keyframes spin-3d-ring {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-3d-ring {
+  transform-style: preserve-3d;
+  animation: spin-3d-ring 28s linear infinite;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+@keyframes spin-ring {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-node-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-ring-1 {
+  animation: spin-ring 18s linear infinite;
+}
+.animate-spin-node-1 {
+  animation: spin-node-reverse 18s linear infinite;
+}
+
+.animate-spin-ring-2 {
+  animation: spin-ring 26s linear infinite;
+}
+.animate-spin-node-2 {
+  animation: spin-node-reverse 26s linear infinite;
+}
+
+.animate-spin-ring-3 {
+  animation: spin-ring 34s linear infinite;
+}
+.animate-spin-node-3 {
+  animation: spin-node-reverse 34s linear infinite;
+}
+
+.animate-spin-ring-4 {
+  animation: spin-ring 42s linear infinite;
+}
+.animate-spin-node-4 {
+  animation: spin-node-reverse 42s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-scan-line {
+  animation: scan-line 3.2s linear infinite;
+}
