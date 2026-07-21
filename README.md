@@ -1,4 +1,4 @@
-# 🚀 Production-Grade Full-Stack Portfolio & Technical Telemetry Platform (`FUTURE_FS_01`)
+# 🚀  Full-Stack Portfolio & Technical Telemetry Platform (`FUTURE_FS_01`)
 
 [![Architecture](https://img.shields.io/badge/Architecture-Decoupled_Full--Stack-blue.svg)](https://github.com/ankitjsr12/FUTURE_FS_01)
 [![Frontend](https://img.shields.io/badge/Frontend-React_18_%7C_Vite_%7C_Tailwind_v4-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -162,7 +162,7 @@ Security best practices are strictly enforced in this repository:
 
 ---
 
-## 📁 Senior Architectural Directory Structure
+## 📁  Architectural Directory Structure
 
 ```text
 FUTURE_FS_01/
