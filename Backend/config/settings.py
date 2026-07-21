@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Serve static files in production
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware', # CORS middleware must go before CommonMiddleware
     'django.middleware.common.CommonMiddleware',
@@ -68,14 +69,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database Setup (Local SQLite fallback, optional MySQL integration)
+# Database Setup (Render/Railway PostgreSQL, MySQL, or Local SQLite fallback)
+DATABASE_URL = os.environ.get('DATABASE_URL')
 DB_NAME = os.environ.get('DB_NAME')
 DB_USER = os.environ.get('DB_USER')
 DB_PASSWORD = os.environ.get('DB_PASSWORD')
 DB_HOST = os.environ.get('DB_HOST', 'localhost')
 DB_PORT = os.environ.get('DB_PORT', '3306')
 
-if DB_NAME and DB_USER:
+if DATABASE_URL:
+    try:
+        import dj_database_url
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=DATABASE_URL,
+                conn_max_age=600,
+                conn_health_checks=True,
+            )
+        }
+    except Exception:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+elif DB_NAME and DB_USER:
     try:
         import pymysql
         pymysql.install_as_MySQLdb()
@@ -98,6 +117,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

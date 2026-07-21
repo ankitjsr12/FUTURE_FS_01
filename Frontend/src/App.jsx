@@ -95,7 +95,8 @@ export default function App() {
 
   // Fetch portfolio content from Django API on mount
   useEffect(() => {
-    fetch("http://localhost:8000/api/portfolio-data/")
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    fetch(`${API_BASE_URL}/api/portfolio-data/`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

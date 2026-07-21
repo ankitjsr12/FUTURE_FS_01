@@ -1,69 +1,85 @@
-# 🚀  Full-Stack Portfolio & Technical Telemetry Platform (`FUTURE_FS_01`)
+# 🚀 Production-Grade Full-Stack Portfolio & Technical Telemetry Platform (`FUTURE_FS_01`)
 
-[![Architecture](https://img.shields.io/badge/Architecture-Decoupled_Full--Stack-blue.svg)](https://github.com/ankitjsr12/FUTURE_FS_01)
-[![Frontend](https://img.shields.io/badge/Frontend-React_18_%7C_Vite_%7C_Tailwind_v4-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Backend](https://img.shields.io/badge/Backend-Django_6.0_%7C_REST_Framework-092E20?logo=django&logoColor=white)](https://www.djangoproject.com/)
-[![Code Quality](https://img.shields.io/badge/Code_Quality-ESLint_Passed-brightgreen.svg)](https://eslint.org/)
+[![Architecture](https://img.shields.io/badge/Architecture-Decoupled_Cloud_Deployment-blue.svg)](https://github.com/ankitjsr12/FUTURE_FS_01)
+[![Frontend](https://img.shields.io/badge/Frontend-Vercel_%7C_Netlify-black?logo=vercel&logoColor=white)](https://vercel.com/)
+[![Backend](https://img.shields.io/badge/Backend-Render_%7C_Railway-092E20?logo=django&logoColor=white)](https://render.com/)
+[![Database](https://img.shields.io/badge/Database-PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 An enterprise-ready, high-performance developer portfolio and interactive telemetry application engineered with a decoupled architecture. This repository combines a **Django REST Framework** backend API with a modern **React 18 + Vite** frontend interface featuring 3D orbit telemetry visuals, real-time mail dispatch, and automated SEO metadata.
 
 ---
 
-## 🏛 Systems Architecture & Senior Engineering Design
+## 🏛 Target Production Deployment Architecture
 
+```text
+       ┌─────────────────────────────────────────────────────────────┐
+       │              Frontend Client (Vercel / Netlify)             │
+       │       React 18 + Vite SPA (Tailwind CSS v4 & 3D Canvas)     │
+       └──────────────────────────────┬──────────────────────────────┘
+                                      │
+                         HTTPS / CORS REST API Calls
+                                      │
+       ┌──────────────────────────────▼──────────────────────────────┐
+       │             Django Backend API (Render / Railway)           │
+       │     Gunicorn WSGI Server + WhiteNoise Static Engine         │
+       └──────────────┬──────────────────────────────┬───────────────┘
+                      │                              │
+           SQL Relational Database             Optional Cloud Suite
+                      │                              │
+       ┌──────────────▼──────────────┐  ┌────────────▼──────────────┐
+       │     PostgreSQL Database     │  │     Firebase Services     │
+       │   (Managed Cloud Cluster)   │  │ ├── Auth & Push Notify    │
+       └─────────────────────────────┘  │ └── Cloud File Storage    │
+                                        └───────────────────────────┘
 ```
-                     ┌──────────────────────────────────────────────┐
-                     │          React 18 + Vite Client App          │
-                     │  (Tailwind CSS v4, Framer Motion, 3D Canvas) │
-                     └──────────────────────┬───────────────────────┘
-                                            │
-                                  HTTPS / JSON REST API
-                                            │
-                     ┌──────────────────────▼───────────────────────┐
-                     │         Django 6.0 REST Controller           │
-                     │ (Middleware, CORS Security, Mail Engine)     │
-                     └──────────────────────┬───────────────────────┘
-                                            │
-                                  Django ORM Data Access
-                                            │
-                     ┌──────────────────────▼───────────────────────┐
-                     │           SQLite3 / Relational DB            │
-                     │  (Profile, Skills, Certs, Blogs, Messages)   │
-                     └──────────────────────────────────────────────┘
-```
-
-### **Core Engineering Principles**
-- **Decoupled Architecture**: Stateless RESTful JSON communication allowing independent scaling and seamless continuous deployment of frontend and backend services.
-- **Fail-Safe Fallback Mechanics**: Automatic fallback to local static data structures if the backend service is offline, ensuring zero downtime for end-users.
-- **Security-First Implementation**: Environment variable isolation (`.env`), CORS origin restriction, Django ORM SQL injection prevention, and credential management scripts.
-- **Performance & Asset Optimization**: Code-split Vite production bundles, GPU-accelerated CSS keyframe animations, and 60 FPS 3D orbital transforms.
 
 ---
 
 ## 🌟 Key Application Features
 
-### 1. 🪐 3D Orbital Telemetry Engine ("Skills Universe")
-- **Multi-Layer Radial System**: 5 dynamic orbit rings representing *Frontend*, *Backend*, *AI & ML*, *Database & Tools*, and *Verified Certifications*.
-- **Interactive Telemetry Console**: Real-time hover triggers providing technical proficiency indices, credential verification links, and system telemetry metrics.
+- **🪐 3D Orbital Telemetry Engine ("Skills Universe")**: Multi-layer radial orbit system with 5 planetary rings for *Frontend*, *Backend*, *AI & ML*, *Database & Tools*, and *Verified Certifications*.
+- **📄 Interactive Curriculum Vitae (CV) Engine**: In-app printable and downloadable resume viewer.
+- **📝 Technical Blog Platform**: Django REST `BlogPost` backend with tag filters, live search, and reader modal.
+- **📬 Automated Contact & Email Dispatch Pipeline**: Real-time email dispatch using Django `send_mail` with database storage.
+- **🌙 Dark / Light Theme System**: Dynamic CSS theme tokens with persistent storage.
+- **🔍 Enterprise SEO & Accessibility**: Open Graph cards, Twitter Meta, and Schema.org JSON-LD structured data.
 
-### 2. 📄 Interactive Curriculum Vitae (CV) Engine
-- **In-App Resume Viewer**: Full-screen modal presenting education, project history, technical stack breakdown, and verified credentials.
-- **Export Capabilities**: Native single-click PDF download and print pipeline (`window.print()`).
+---
 
-### 3. 📝 Technical Blog & Article Publishing Platform
-- **RESTful Content Engine**: Backed by Django `BlogPost` models with support for tags, read times, search filtering, and markdown rendering.
-- **Reader Modal**: Full-screen reader layout engineered for readable technical documentation.
+## ☁️ Cloud Deployment Guide
 
-### 4. 📬 Automated Contact & Mail Dispatch Pipeline
-- **Validation Engine**: Client-side regex verification paired with backend serializer validation.
-- **Email Notification**: Automated dispatch using Django `send_mail` with fallback logging for local development.
+### **1. Deploy Django Backend (Render / Railway + PostgreSQL)**
 
-### 5. 🌙 Dynamic Dark / Light Theme System
-- **Theme Tokens**: CSS custom properties switching between Dark Slate and Clean Light themes with `localStorage` persistence.
+#### **Option A: Render Blueprint (Recommended)**
+1. Connect your GitHub repository `ankitjsr12/FUTURE_FS_01` to [Render](https://dashboard.render.com).
+2. Click **New +** -> **Blueprint**.
+3. Render automatically detects [Backend/render.yaml](file:///Users/ak/project%201/task1f/portfolio-website/Backend/render.yaml) which sets up:
+   - Python Web Service (`gunicorn config.wsgi:application`)
+   - Managed **PostgreSQL Database** (`portfolio-db`) automatically linked via `DATABASE_URL`.
+4. Copy your backend service URL (e.g. `https://django-portfolio-backend.onrender.com`).
 
-### 6. 🔍 Enterprise SEO & Accessibility (a11y)
-- Embedded **Open Graph** tags, **Twitter Cards**, and **Schema.org `Person` JSON-LD** structured metadata for search engine indexing.
+#### **Option B: Railway Deployment**
+1. Create a New Project on [Railway](https://railway.app/).
+2. Add a **PostgreSQL Database** plugin.
+3. Deploy GitHub repository `FUTURE_FS_01` with Root Directory set to `Backend`.
+4. Railway reads [Backend/Procfile](file:///Users/ak/project%201/task1f/portfolio-website/Backend/Procfile) (`web: gunicorn config.wsgi:application`) and injects `DATABASE_URL`.
+
+---
+
+### **2. Deploy Frontend (Vercel / Netlify)**
+
+#### **Option A: Vercel**
+1. Import repository `FUTURE_FS_01` into [Vercel](https://vercel.com).
+2. Set **Root Directory**: `Frontend`
+3. Add Environment Variable:
+   - **`VITE_API_URL`**: `https://your-backend-url.onrender.com`
+4. Click **Deploy**. Vercel uses [Frontend/vercel.json](file:///Users/ak/project%201/task1f/portfolio-website/Frontend/vercel.json) for automatic Vite build.
+
+#### **Option B: Netlify**
+1. Import repository into [Netlify](https://netlify.com).
+2. Netlify auto-detects [Frontend/netlify.toml](file:///Users/ak/project%201/task1f/portfolio-website/Frontend/netlify.toml).
+3. Set Environment Variable `VITE_API_URL` = `https://your-backend-url.onrender.com`.
 
 ---
 
@@ -71,133 +87,75 @@ An enterprise-ready, high-performance developer portfolio and interactive teleme
 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
-| **Frontend UI** | React 18, Vite 8 | UI Rendering & Ultra-Fast Module Bundling |
-| **Styling** | Tailwind CSS v4, Custom CSS Variables | Design System Tokens & Responsive Utilities |
-| **Animations** | Framer Motion, GSAP, Canvas Confetti | Complex Component Transitions & Parallax Visuals |
-| **Backend API** | Django 6.0, Django REST Framework | REST Controllers, Data Serialization & Auth |
-| **Database** | SQLite3 / PostgreSQL-ready | Relational Data Storage |
-| **Admin Suite** | Django Jazzmin Admin Dashboard | Content Management & Credential Control |
+| **Frontend Host** | Vercel / Netlify | CDN Edge Deployment & SPA Routing |
+| **Frontend App** | React 18, Vite 8, Tailwind CSS v4 | UI Rendering & Asset Optimization |
+| **Backend Host** | Render / Railway | Containerized Python WSGI Application |
+| **Backend Framework**| Django 6.0, Django REST Framework | REST Endpoints, Serializers & CORS Security |
+| **Database** | PostgreSQL (Cloud Cluster) | Production Relational Storage via `dj-database-url` |
+| **Static Engine** | WhiteNoise Middleware | Production Static Asset Serving |
+| **WSGI Server** | Gunicorn | High-Concurrency Application Server |
 
 ---
 
-## 🔌 API Endpoint Documentation
-
-| HTTP Method | Endpoint Path | Description | Access Level |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/portfolio-data/` | Fetches consolidated profile, skills, projects, certifications & blog data | Public |
-| `POST` | `/api/contact/` | Submits visitor message & triggers email notification | Public |
-| `GET / POST` | `/admin/` | Enterprise Django Management Dashboard | Authorized Admin |
-
-### Sample `GET /api/portfolio-data/` Payload
-```json
-{
-  "personalInfo": {
-    "name": "Ankit Kumar",
-    "title": "Senior Full-Stack Engineer & AI Developer"
-  },
-  "skills": [...],
-  "certifications": [...],
-  "projects": [...],
-  "blogPosts": [...]
-}
-```
-
----
-
-## ⚙️ Quick Start & Developer Workflow
+## 🔑 Admin Access & Local Development
 
 ### Prerequisites
 - **Python**: 3.10+
 - **Node.js**: 18.0+ / npm 9.0+
 
-### 1. Repository Setup
+### Local Setup
 ```bash
 git clone https://github.com/ankitjsr12/FUTURE_FS_01.git
 cd FUTURE_FS_01
 git checkout aku
-```
 
-### 2. Backend Service Setup (Django REST)
-```bash
+# Backend Setup
 cd Backend
-
-# Apply database migrations
+pip install -r requirements.txt
 python3 manage.py migrate
-
-# Initialize or reset admin credentials if required
 python3 change_admin.py admin admin123
-
-# Start development server
 python3 manage.py runserver
-```
-- **Service URL**: `http://localhost:8000/`
-- **API Endpoint**: `http://localhost:8000/api/portfolio-data/`
-- **Admin Dashboard**: `http://localhost:8000/admin/`
 
-### 3. Frontend Client Setup (React + Vite)
-In a secondary terminal tab:
-```bash
-cd Frontend
-
-# Install node packages
+# Frontend Setup (in separate terminal tab)
+cd ../Frontend
 npm install
-
-# Execute development server
 npm run dev
 ```
-- **Application URL**: `http://localhost:5173/`
+
+- **Web App**: `http://localhost:5173/`
+- **Django Admin**: `http://localhost:8000/admin/` (`admin` / `admin123`)
 
 ---
 
-## 🔑 Security & Credential Management
-
-Security best practices are strictly enforced in this repository:
-- **Environment Isolation**: Secrets are loaded via `os.environ` from `.env` files (documented in `Backend/.env.example`).
-- **Git Protections**: `node_modules`, `db.sqlite3`, `media/`, `dist/`, and environment keys are strictly excluded via root `.gitignore`.
-- **Credential Update Script**: Run the automated script to modify admin credentials:
-  ```bash
-  cd Backend
-  python3 change_admin.py <new_username> <new_password>
-  ```
-
----
-
-## 📁  Architectural Directory Structure
+## 📁 Repository Structure
 
 ```text
 FUTURE_FS_01/
-├── Backend/                    # Django 6.0 REST Application Service
-│   ├── config/                 # Central Settings, CORS, & Routing Core
-│   ├── portfolio/              # Main App (Models, Serializers, Controllers, Admin)
-│   ├── change_admin.py         # Automated Credential Security Utility
-│   ├── ADMIN_CREDENTIALS.md    # Security Reference Documentation
-│   └── manage.py               # Django Management CLI
-├── Frontend/                   # React 18 + Vite Web Application
-│   ├── public/                 # Favicons, Vectors, & Web Manifest
-│   ├── src/
-│   │   ├── assets/             # Media Assets & Optimization Vectors
-│   │   ├── components/         # Modular Component Suite (Hero, Skills, Blog, CV Modal)
-│   │   ├── data/               # Local Fallback Data Structures
-│   │   ├── App.jsx             # Top-Level Application State & Theme Handler
-│   │   ├── main.jsx            # DOM Entry & Hydration
-│   │   └── index.css           # Global Theme Tokens & CSS Variables
-│   ├── index.html              # HTML Head with Open Graph & JSON-LD Schema
-│   └── vite.config.js          # Vite Build Engine Configuration
+├── Backend/                    # Django 6.0 REST Service
+│   ├── config/                 # Settings, WhiteNoise, & PostgreSQL Engine
+│   ├── portfolio/              # API Application (Models, Serializers, Views, Admin)
+│   ├── Procfile                # WSGI Server Procfile for Railway/Render
+│   ├── render.yaml             # Render Blueprint IaC configuration
+│   ├── requirements.txt        # Production Dependencies (Gunicorn, psycopg2, dj-database-url)
+│   └── change_admin.py         # Admin Security Utility
+├── Frontend/                   # React 18 + Vite SPA
+│   ├── netlify.toml            # Netlify Build & Redirect Rules
+│   ├── vercel.json             # Vercel Deployment Configuration
+│   ├── public/
+│   │   └── _redirects          # Netlify SPA Redirect Rules
+│   └── src/                    # Components (Hero, Skills, Blog, ResumeModal, etc.)
+├── vercel.json                 # Root Vercel Configuration
 ├── .gitignore                  # Production Exclusion Rules
-└── README.md                   # Enterprise Technical Documentation
+└── README.md                   # Production Deployment Architecture Documentation
 ```
 
 ---
 
-## 👨‍💻 Senior Lead Architect
+## 👨‍💻 Lead Architect
 
 **Ankit Kumar**  
 *Senior Full-Stack Software Engineer & AI Systems Architect*  
-B.Tech Computer Science Engineering (Artificial Intelligence & Machine Learning) — Brainware University  
+B.Tech CSE (AI & ML) — Brainware University  
 
 - **GitHub**: [@ankitjsr12](https://github.com/ankitjsr12)
-- **LinkedIn**: [Ankit Kumar](https://linkedin.com)
 - **Email**: [ankit@example.com](mailto:ankit@example.com)
-
----
-*© 2026 Ankit Kumar. Distributed under the [MIT License](LICENSE).*
