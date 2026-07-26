@@ -26,6 +26,8 @@ db.sqlite3
 *.sqlite3
 Backend/media/
 media/
+Backend/staticfiles/
+staticfiles/
 
 # Environment Variables & Secrets
 .env

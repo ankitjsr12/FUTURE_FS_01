@@ -4,7 +4,7 @@
 
 - **Admin Login URL**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
 - **Username**: `admin`
-- **Password**: `admin123`
+- **Password**: `Ankit123`
 
 ---
 
