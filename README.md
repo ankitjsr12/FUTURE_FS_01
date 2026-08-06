@@ -65,6 +65,14 @@ An enterprise-ready, high-performance developer portfolio and interactive teleme
 3. Deploy GitHub repository `FUTURE_FS_01` with Root Directory set to `Backend`.
 4. Railway reads [Backend/Procfile](file:///Users/ak/project%201/task1f/portfolio-website/Backend/Procfile) (`web: gunicorn config.wsgi:application`) and injects `DATABASE_URL`.
 
+#### **Option C: Vercel Deployment (Serverless Python)**
+1. Import repository `FUTURE_FS_01` into [Vercel](https://vercel.com).
+2. Set **Root Directory**: `Backend`
+3. Vercel automatically detects [Backend/vercel.json](file:///Users/ak/project%201/task1f/portfolio-website/Backend/vercel.json) and uses `@vercel/python` serverless function with [Backend/api/index.py](file:///Users/ak/project%201/task1f/portfolio-website/Backend/api/index.py) WSGI handler.
+4. Set Environment Variables:
+   - **`SECRET_KEY`**: Production secret key
+   - **`DATABASE_URL`**: Cloud PostgreSQL connection URL (e.g. Neon.tech or Supabase)
+
 ---
 
 ### **2. Deploy Frontend (Vercel / Netlify)**
@@ -132,6 +140,8 @@ npm run dev
 ```text
 FUTURE_FS_01/
 ├── Backend/                    # Django 6.0 REST Service
+│   ├── api/index.py            # Vercel Serverless WSGI Handler
+│   ├── vercel.json             # Vercel Serverless Build & Route Config
 │   ├── config/                 # Settings, WhiteNoise, & PostgreSQL Engine
 │   ├── portfolio/              # API Application (Models, Serializers, Views, Admin)
 │   ├── Procfile                # WSGI Server Procfile for Railway/Render
