@@ -122,7 +122,7 @@ export default function App() {
       {/* Floating Background Wave Blobs */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-[45vw] h-[45vw] max-w-[450px] max-h-[450px] rounded-full bg-brand-primary/5 blur-3xl animate-pulse-slow"></div>
-        <div className="absolute top-[60%] right-[10%] w-[55vw] h-[55vw] max-w-[550px] max-h-[550px] rounded-full bg-indigo-500/5 blur-3xl animate-pulse-slow [animation-delay:2s.5]"></div>
+        <div className="absolute top-[60%] right-[10%] w-[55vw] h-[55vw] max-w-[550px] max-h-[550px] rounded-full bg-indigo-500/5 blur-3xl animate-pulse-slow [animation-delay:2.5s]"></div>
       </div>
 
       {/* Custom Trailing Cursor */}

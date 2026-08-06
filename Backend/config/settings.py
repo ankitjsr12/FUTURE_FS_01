@@ -34,10 +34,15 @@ else:
     # Safe default for local development
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
-# Render automatically sets RENDER_EXTERNAL_HOSTNAME to the public URL of the web service
+# Render & Vercel automatically set environment variables
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+VERCEL_URL = os.environ.get('VERCEL_URL')
+if VERCEL_URL:
+    ALLOWED_HOSTS.append(VERCEL_URL)
+ALLOWED_HOSTS.append('.vercel.app')
 
 
 # Application definition
